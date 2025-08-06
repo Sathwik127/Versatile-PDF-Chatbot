@@ -15,7 +15,7 @@ llm3 = ChatGoogleGenerativeAI(
 )
 llm = ChatGroq(
     model="llama3-70b-8192",
-    groq_api_key="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"
+    groq_api_key=os.getenv("GROQ_API_KEY")
 )
 from langchain_community.document_loaders import PDFMinerLoader
 import tempfile
@@ -105,3 +105,4 @@ if st.button("Send"):
     else:
         response=chain2.invoke({"question": q})
         st.write(response["answer"])
+
